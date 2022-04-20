@@ -110,19 +110,78 @@
 -- TODO!
 
 -- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
+--.print "Movies"
+--.print "======"
+--.print ""
 
 -- The SQL statement for the movies output
 -- TODO!
 
 -- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
+--.print ""
+--.print "Top Cast"
+--.print "========"
+--.print ""
 
 
 -- The SQL statement for the cast output
 -- TODO!
+
+
+
+
+-- DROP TABLES
+
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS studio;
+DROP TABLE IF EXISTS actor;
+
+-- CREATE TABLES
+
+CREATE TABLE movies (
+    movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    year_released TEXT,
+    mpaa_rating TEXT,
+    studio_id INTEGER
+);
+
+CREATE TABLE studio(
+    studio_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    studio_name TEXT
+);
+
+CREATE TABLE actor(
+    actor_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    actor_name TEXT,
+    movie_id INTEGER,
+    character_name TEXT
+);
+
+INSERT INTO studio(studio_name)
+VALUES 
+    ('Warner Bros.');
+
+INSERT INTO movies(title, year_released, mpaa_rating, studio_id)
+VALUES 
+    ('Batman Begins','2005','PG-13',1),
+    ('The Dark Knight','2008','PG-13',1),
+    ('The Dark Knight Rises','2012','PG-13',1);
+
+INSERT INTO actor(actor_name, movie_id, character_name)
+VALUES 
+    ('Christian Bale',1,'Bruce Wayne'),
+    ('Michael Caine',1,'Alfred'),
+    ('Liam Neeson',1,"Ra's Al Ghul"),
+    ('Katie Holmes',1,'Rachel Dawes'),
+    ('Gary Oldman',1,'Commissioner Gordon'),
+    ('Christian Bale',2,'Bruce Wayne'),
+    ('Heath Ledger',2,'Joker'),
+    ('Aaron Eckhart',2,'Harvey Dent'),
+    ('Michael Caine',2,'Alfred'),
+    ('Maggie Gyllenhaal',2,'Rachel Dawes'),
+    ('Christian Bale',3,'Bruce Wayne'),
+    ('Gary Oldman',3,"Commissioner Gordon"),
+    ('Tom Hardy',3,'Bane'),
+    ('Joseph Gordon-Levitt',3,'John Blake'),
+    ('Anne Hathaway',3,'Selina Kyle');
